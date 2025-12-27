@@ -7,25 +7,36 @@ Detailed hardware requirements for running a Dogecoin node.
 | Resource | Minimum | Recommended (Mining Pool) |
 |----------|---------|---------------------------|
 | RAM | 4GB | 8GB |
-| Disk | 120GB SSD | 200GB NVMe/SSD |
+| Disk | 150GB SSD | 200GB NVMe/SSD |
 | CPU | 2 cores | 4 cores |
 | Network | 100Mbps | 1Gbps |
 | OS | Debian 13 (Trixie) | |
 
+> **Current blockchain size (Dec 2024):** ~65 GB. With txindex for mining: ~100-120 GB total.
+
 ## Storage Requirements
 
-| Component | Size |
-|-----------|------|
-| Full Blockchain | ~100GB |
-| Pruned Blockchain | ~4GB |
-| Transaction Index (txindex) | ~10GB |
-| Build Dependencies | ~3GB |
-| Source + Compilation | ~5GB |
-| Logs + Overhead | ~5GB |
-| **Total (Full Node)** | **~120GB** |
-| **Recommended** | **200GB** |
+| Component | Size (Dec 2024) |
+|-----------|-----------------|
+| Full Blockchain | ~65 GB |
+| Pruned Blockchain | ~4 GB |
+| Transaction Index (txindex) | ~30-50 GB |
+| Build Dependencies | ~3 GB |
+| Source + Compilation | ~5 GB |
+| Logs + Overhead | ~5 GB |
+| **Total (Full Node + txindex)** | **~110-130 GB** |
+| **Recommended (with growth)** | **150-200 GB** |
 
-> The Dogecoin blockchain continues to grow over time.
+> **Note:** Dogecoin blockchain is currently ~65 GB (Dec 2024). With txindex=1 for mining pools, expect ~100-120 GB total. Plan for growth - the blockchain increases ~10-15 GB/year.
+
+### Comparison with Litecoin
+
+| Coin | Blockchain Size | With txindex | Recommended |
+|------|-----------------|--------------|-------------|
+| Dogecoin | ~65 GB | ~100-120 GB | 150-200 GB |
+| Litecoin | ~225 GB | ~300-350 GB | 400-500 GB |
+
+> Litecoin's blockchain is ~3.5x larger than Dogecoin.
 
 ## Why SSD is Required for Mining Pools
 

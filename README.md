@@ -7,10 +7,12 @@ Interactive setup script for deploying Dogecoin nodes on Debian 13, supporting b
 | Resource | Minimum | Recommended |
 |----------|---------|-------------|
 | RAM | 4GB | 8GB |
-| Disk (Full) | 120GB SSD | 200GB SSD |
+| Disk (Full + txindex) | 150GB SSD | 200GB SSD |
 | Disk (Pruned) | 20GB | 50GB |
 | CPU | 2 cores | 4 cores |
 | OS | Debian 13 (Trixie) | |
+
+> **Blockchain size (Dec 2024):** ~65 GB. With txindex for mining pools: ~100-120 GB.
 
 > **Note:** Mining pools require SSD storage. See [VM Requirements](docs/VM-REQUIREMENTS.md) for details.
 

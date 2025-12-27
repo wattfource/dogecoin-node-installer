@@ -96,7 +96,7 @@ sudo swapon /swapfile
 VM Configuration:
 ├── CPU: 4 cores (host passthrough)
 ├── RAM: 8192 MB
-├── Disk: 200GB (virtio-scsi, SSD backend)
+├── Disk: 500GB (virtio-scsi, SSD backend)
 ├── Network: virtio, bridged
 └── BIOS: UEFI (optional)
 ```
@@ -110,7 +110,7 @@ qm create 200 \
   --memory 8192 \
   --net0 virtio,bridge=vmbr0 \
   --scsihw virtio-scsi-pci \
-  --scsi0 local-lvm:200,ssd=1 \
+  --scsi0 local-lvm:500,ssd=1 \
   --boot c --bootdisk scsi0
 ```
 

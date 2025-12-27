@@ -23,7 +23,7 @@
 #       - Debian 13 (Trixie) or compatible Debian-based system
 #       - Root/sudo access
 #       - Minimum 4GB RAM (8GB recommended for compilation)
-#       - Minimum 120GB disk space for full node (10GB for pruned)
+#       - Minimum 400GB disk space for full node (10GB for pruned)
 #       - Internet connection for downloading source code
 #
 #   NODE TYPES:
@@ -31,7 +31,7 @@
 #       - Mining Pool Node: Optimized backend for mining pool software
 #
 #   BLOCKCHAIN MODES:
-#       - Full Node: Complete blockchain (~100GB), maximum security
+#       - Full Node: Complete blockchain (~265GB + txindex), maximum security
 #       - Pruned Node: Reduced blockchain (~4GB), still validates all blocks
 #
 #   CONFIGURATION FILES:
@@ -512,8 +512,8 @@ check_disk_space() {
     local available_gb=$(df -BG / | awk 'NR==2 {print $4}' | sed 's/G//')
     print_info "Available disk space: ${available_gb}GB"
     
-    local required_gb=120
-    local recommended_gb=200
+    local required_gb=400
+    local recommended_gb=500
     if [[ "$BLOCKCHAIN_MODE" == "pruned" ]]; then
         required_gb=20
         recommended_gb=50
@@ -548,7 +548,7 @@ check_disk_space() {
         echo ""
         print_error "Insufficient disk space!"
         if [[ "$BLOCKCHAIN_MODE" == "full" ]]; then
-            echo "         Full Dogecoin blockchain requires ~100GB"
+            echo "         Full Dogecoin blockchain requires ~400GB (265GB chain + txindex)"
             echo "         Plus ~20GB for txindex, compilation, and overhead"
             echo "         Minimum: ${required_gb}GB | Recommended: ${recommended_gb}GB"
             echo "         Consider using a pruned node if space is limited"
@@ -712,7 +712,7 @@ show_introduction() {
     echo "     • Mining Pool Node - Optimized backend for mining pool software"
     echo ""
     echo -e "  ${BOLD}2. Blockchain Mode${NC}"
-    echo "     • Full Node (~100GB) - Complete blockchain, maximum security"
+    echo "     • Full Node (~400GB) - Complete blockchain, maximum security"
     echo "     • Pruned Node (~4GB) - Reduced storage, still validates all blocks"
     echo ""
     echo -e "  ${BOLD}3. Directory Paths${NC}"
@@ -776,7 +776,7 @@ configure_blockchain_mode() {
     fi
     
     local choice=$(prompt_choice "Which blockchain mode do you want?" \
-        "Full Node - Complete blockchain history (~100GB storage required)" \
+        "Full Node - Complete blockchain history (~400GB storage required)" \
         "Pruned Node - Recent data only (~4GB) - Still validates ALL blocks")
     
     if [[ "$choice" == "2" ]]; then
@@ -786,7 +786,7 @@ configure_blockchain_mode() {
     else
         BLOCKCHAIN_MODE="full"
         echo ""
-        print_success "Selected: Full Node (~100GB)"
+        print_success "Selected: Full Node (~400GB)"
     fi
 }
 
@@ -1067,7 +1067,7 @@ show_configuration_summary() {
     
     echo -e "${YELLOW}╭─────────────────────────────────────────────────────────────────────╮${NC}"
     if [[ "$BLOCKCHAIN_MODE" == "full" ]]; then
-        echo -e "${YELLOW}│${NC}  ${BOLD}Disk space required:${NC} ~120GB (100GB chain + 10GB txindex + build)  ${YELLOW}│${NC}"
+        echo -e "${YELLOW}│${NC}  ${BOLD}Disk space required:${NC} ~400GB (265GB chain + 80GB txindex + build) ${YELLOW}│${NC}"
     else
         echo -e "${YELLOW}│${NC}  ${BOLD}Disk space required:${NC} ~20GB (4GB chain + build files)              ${YELLOW}│${NC}"
     fi
@@ -1523,7 +1523,7 @@ prune=${PRUNE_SIZE}
 EOF
     else
         cat >> "$CONFIG_DIR/dogecoin.conf" << EOF
-# Full node - stores complete blockchain (~100GB)
+# Full node - stores complete blockchain (~265GB + txindex ~80GB = ~350GB total)
 # No pruning configured
 EOF
     fi

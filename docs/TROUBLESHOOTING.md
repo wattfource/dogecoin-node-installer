@@ -60,7 +60,7 @@ sudo tail -100 /var/log/dogecoin/debug.log
 3. **Disk full:**
    ```bash
    df -h /var/lib/dogecoin
-   # Need ~100GB for full node, ~4GB for pruned
+   # Need ~400GB for full node with txindex, ~4GB for pruned
    ```
 
 4. **Corrupted database:**

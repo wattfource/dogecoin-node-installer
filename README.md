@@ -39,7 +39,7 @@ The interactive wizard guides you through:
 | Step | Options |
 |------|---------|
 | **Node Type** | Standard (personal) or Mining Pool Backend |
-| **Blockchain** | Full (~100GB) or Pruned (~4GB) |
+| **Blockchain** | Full (~400GB) or Pruned (~4GB) |
 | **Network** | RPC binding, firewall rules |
 | **Pool Wallet** | Create new or use existing (pool mode) |
 

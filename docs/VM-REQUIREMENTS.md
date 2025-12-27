@@ -7,36 +7,36 @@ Detailed hardware requirements for running a Dogecoin node.
 | Resource | Minimum | Recommended (Mining Pool) |
 |----------|---------|---------------------------|
 | RAM | 4GB | 8GB |
-| Disk | 150GB SSD | 200GB NVMe/SSD |
+| Disk | 400GB SSD | 500GB NVMe/SSD |
 | CPU | 2 cores | 4 cores |
 | Network | 100Mbps | 1Gbps |
 | OS | Debian 13 (Trixie) | |
 
-> **Current blockchain size (Dec 2024):** ~65 GB. With txindex for mining: ~100-120 GB total.
+> **⚠️ Current blockchain size (Dec 2024):** ~265 GB. With txindex for mining: ~330-360 GB total.
 
 ## Storage Requirements
 
 | Component | Size (Dec 2024) |
 |-----------|-----------------|
-| Full Blockchain | ~65 GB |
+| Full Blockchain | ~265 GB |
 | Pruned Blockchain | ~4 GB |
-| Transaction Index (txindex) | ~30-50 GB |
+| Transaction Index (txindex) | ~50-80 GB |
 | Build Dependencies | ~3 GB |
 | Source + Compilation | ~5 GB |
-| Logs + Overhead | ~5 GB |
-| **Total (Full Node + txindex)** | **~110-130 GB** |
-| **Recommended (with growth)** | **150-200 GB** |
+| Logs + Overhead | ~10 GB |
+| **Total (Full Node + txindex)** | **~330-360 GB** |
+| **Recommended (with growth)** | **400-500 GB** |
 
-> **Note:** Dogecoin blockchain is currently ~65 GB (Dec 2024). With txindex=1 for mining pools, expect ~100-120 GB total. Plan for growth - the blockchain increases ~10-15 GB/year.
+> **⚠️ IMPORTANT:** Real-world sync data shows ~265 GB for full blockchain (Dec 2024). Third-party blockchain explorers often report incorrect/compressed sizes. Always provision more than you think you need!
 
 ### Comparison with Litecoin
 
 | Coin | Blockchain Size | With txindex | Recommended |
 |------|-----------------|--------------|-------------|
-| Dogecoin | ~65 GB | ~100-120 GB | 150-200 GB |
+| Dogecoin | ~265 GB | ~330-360 GB | **400-500 GB** |
 | Litecoin | ~225 GB | ~300-350 GB | 400-500 GB |
 
-> Litecoin's blockchain is ~3.5x larger than Dogecoin.
+> Both coins require similar storage (~400-500 GB) for full node with txindex.
 
 ## Why SSD is Required for Mining Pools
 

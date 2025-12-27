@@ -158,6 +158,26 @@ dogecoin-cli -conf=/etc/dogecoin/dogecoin.conf loadwallet "pool-wallet"
 dogecoin-cli -conf=/etc/dogecoin/dogecoin.conf createwallet "pool-wallet"
 ```
 
+### 7. Blockchain Size - Don't Trust Third-Party Stats
+
+**Problem:** Third-party blockchain explorers (bitinfocharts, etc.) reported Dogecoin blockchain as ~65 GB, but actual sync showed ~265 GB.
+
+**Real-world data from sync (Dec 2024):**
+```
+"size_on_disk": 99609676692  → 99.6 GB at 37.6% sync
+Full estimate: 99.6 / 0.376 = ~265 GB
+```
+
+**Lesson:** Always provision based on actual sync data, not third-party estimates. Those sites may report compressed sizes or different metrics.
+
+**Correct storage requirements:**
+| Component | Size |
+|-----------|------|
+| Full Blockchain | ~265 GB |
+| Transaction Index | ~50-80 GB |
+| **Total (mining pool)** | **~330-360 GB** |
+| **Recommended** | **400-500 GB** |
+
 ## Resources
 
 - [Dogecoin GitHub](https://github.com/dogecoin/dogecoin)
